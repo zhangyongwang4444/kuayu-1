@@ -48,9 +48,9 @@ var server = http.createServer(function (request, response) {
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
         if (request.headers['referer'].indexOf('http://frank.com:9999') === 0) {
-            const string = fs.readFileSync('./public/friends.js').toString()
+            const string = `window['{{xxx}}']({{data}})`
             const data = fs.readFileSync('./public/friends.json').toString()
-            const string2 = string.replace("{{data}}", data).replace('{{xxx}}', query.functionName)
+            const string2 = string.replace("{{data}}", data).replace('{{xxx}}', query.callback)
             response.write(string2)
             response.end()
         } else {

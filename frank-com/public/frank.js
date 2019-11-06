@@ -5,7 +5,7 @@ function jsonp(url) {
             resolve(data)
         }
         const script = document.createElement('script')
-        script.src = `${url}?functionName=${random}`
+        script.src = `${url}?callback=${random}`
         script.onload = () => {
             script.remove()
         }
